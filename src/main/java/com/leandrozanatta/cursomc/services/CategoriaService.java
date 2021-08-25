@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 import com.leandrozanatta.cursomc.domain.Categoria;
 import com.leandrozanatta.cursomc.repositories.*;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 //PACOTE RESPONSÁVEL POR ATENDER O CONTROLADOR QUE ESTÁ RELACIONADO A CLASSE DE DOMINIO
 @Service
 public class CategoriaService {
 	//DEPENDENCIA PARA ACESSAR OS DADOS
 	@Autowired
 	private CategoriaRepository repo;
-	public Categoria buscar(Integer id) {
+	
+	public Categoria buscar(Integer id){
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new com.leandrozanatta.cursomc.services.exceptions.ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
-
 }
