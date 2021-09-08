@@ -1,6 +1,5 @@
 package com.leandrozanatta.cursomc;
 
-import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
