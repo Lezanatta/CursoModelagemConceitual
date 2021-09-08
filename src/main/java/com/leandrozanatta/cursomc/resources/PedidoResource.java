@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leandrozanatta.cursomc.domain.Categoria;
-import com.leandrozanatta.cursomc.services.CategoriaService;
+import com.leandrozanatta.cursomc.domain.Pedido;
+import com.leandrozanatta.cursomc.services.PedidoService;
 
 //CLASSE RESPONSÁVEL POR CONTROLAR AS INSTANCIAS 
 @RestController
-@RequestMapping(value="/categorias")
-public class CategoriaResource {
+@RequestMapping(value="/pedidos")
+public class PedidoResource {
 	//DEPENDENCIA PARA ACESSAR OS SERVICOS
 	@Autowired
-	private CategoriaService service;
+	private PedidoService service;
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 
 		//UTILIZANDO O METODO DA CLASSE DE SERVICOS PARA BUSCAR OS DADOS
-		Categoria obj = service.buscar(id);
+		Pedido obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 
 	}
